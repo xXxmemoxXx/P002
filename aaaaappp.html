@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Caudal y Presión</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Gráfico de Caudal y Presión</h2>
+    <div id="grafico"></div>
+
+    <script>
+        function actualizarGrafico() {
+            $.getJSON("/datos", function(data) {
+                $("#grafico").html(data.grafico);
+            });
+        }
+
+        // Cargar el gráfico al inicio
+        actualizarGrafico();
+
+        // Actualizar cada 5 minutos (300000 milisegundos)
+        setInterval(actualizarGrafico, 300000);
+    </script>
+</body>
+</html>
